@@ -1,18 +1,26 @@
 import sys
 import urllib.request
-import requests
 import urllib3
 
 
 
 print("開始します")
-
+urllib3.disable_warnings()
 http = urllib3.PoolManager()
 
 url = sys.argv[1]
-res = http.request("GET",url)
+try:
+    res = http.request("GET",url)
+except:
+    print("url先が存在しません")
 
-print(res.data)
+
+if res.status == 200:
+    print(res.data)
+else:
+    print("url先が読み込めませんでした")
+
+
 
 
 #savemane = "sa.mp3"
