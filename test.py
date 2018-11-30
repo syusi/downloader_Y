@@ -2,14 +2,24 @@ import sys
 import urllib.request
 import urllib3
 import bs4
+import re
 
+baseUrl = "https://www.easy-youtube-mp3.com/download.php?"
+
+url = sys.argv[1]
+
+vPoint = re.search("v=",url)
+
+print(url[vPoint.start():])
+
+
+url = baseUrl + url[vPoint.start():]
 
 
 print("開始します")
 urllib3.disable_warnings()
 http = urllib3.PoolManager()
 
-url = sys.argv[1]
 try:
     res = http.request("GET",url)
 except:
@@ -29,13 +39,12 @@ a = soup.find_all("a",class_="btn btn-lg btn-success")
 
 print(a[0].get("href"))
 
-#savemane = "sa.mp3"
+url = a[0].get("href")
 
+savemane = "test.mp3"
+urllib.request.urlretrieve(url,savemane)
 
-
-#urllib.request.urlretrieve(url,savemane)
-
-#print("保存しました")
+print("保存しました")
 
 """
 https://www.easy-youtube-mp3.com/download.php?v=GElbyAZBTCk
