@@ -26,5 +26,5 @@ youtubeのリンクとアーティスト、曲名をcsv形式で投げ込むと�
 
 ### ライセンス
 - 変換をお願いしているサイト(大丈夫かどうか不明)
-    - https://www.easy-youtube-mp3.com/download.php
+    - https://www.easy-youtube-mp3.com
 - python3
