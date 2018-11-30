@@ -1,16 +1,27 @@
 import sys
 import urllib.request
+import requests
+import urllib3
 
 
-print("hello")
+
+print("開始します")
+
+http = urllib3.PoolManager()
 
 url = sys.argv[1]
-savemane = "sa.mp3"
+res = http.request("GET",url)
+
+print(res.data)
 
 
-urllib.request.urlretrieve(url,savemane)
+#savemane = "sa.mp3"
 
-print("保存しました")
+
+
+#urllib.request.urlretrieve(url,savemane)
+
+#print("保存しました")
 
 """
 https://www.easy-youtube-mp3.com/download.php?v=GElbyAZBTCk
