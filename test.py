@@ -1,6 +1,7 @@
 import sys
 import urllib.request
 import urllib3
+import bs4
 
 
 
@@ -16,12 +17,17 @@ except:
 
 
 if res.status == 200:
-    print(res.data)
+    print("OK\n")
 else:
     print("url先が読み込めませんでした")
 
+soup = bs4.BeautifulSoup(res.data,"html.parser")
 
+print(str(soup.title) + "\n")
 
+a = soup.find_all("a",class_="btn btn-lg btn-success")
+
+print(a[0].get("href"))
 
 #savemane = "sa.mp3"
 
